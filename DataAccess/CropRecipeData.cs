@@ -1,9 +1,10 @@
 ﻿namespace FarmSim.Content.Tropical.DataAccess;
-internal static class CropRecipeData
+public static class CropRecipeData
 {
-    public static Task<BasicList<CropRecipe>> GetAsync()
+    public static BasicList<CropRecipe> Get()
     {
         BasicList<CropRecipe> output = [];
+
         output.Add(new CropRecipe
         {
             Item = TropicalItemList.Pineapple,
@@ -39,6 +40,11 @@ internal static class CropRecipeData
             IsFast = false,
             HowMany = 3
         });
+        return output;
+    }
+    public static Task<BasicList<CropRecipe>> GetAsync()
+    {
+        BasicList<CropRecipe> output = Get();
         return Task.FromResult(output);
     }
 }
