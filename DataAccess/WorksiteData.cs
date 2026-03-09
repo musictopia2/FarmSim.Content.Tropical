@@ -1,7 +1,7 @@
 ﻿namespace FarmSim.Content.Tropical.DataAccess;
-internal static class WorksiteData
+public static class WorksiteData
 {
-    public static Task<BasicList<WorksiteRecipe>> GetAsync()
+    public static BasicList<WorksiteRecipe> Get()
     {
         BasicList<WorksiteRecipe> output = [];
         WorksiteRecipe recipe = new()
@@ -92,6 +92,11 @@ internal static class WorksiteData
         };
         recipe.BaselineBenefits.Add(benefit);
         output.Add(recipe);
+        return output;
+    }
+    public static Task<BasicList<WorksiteRecipe>> GetAsync()
+    {
+        var output = Get();
         return Task.FromResult(output);
     }
 }
