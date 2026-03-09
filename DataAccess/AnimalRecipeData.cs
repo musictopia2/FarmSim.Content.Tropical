@@ -1,7 +1,7 @@
 ﻿namespace FarmSim.Content.Tropical.DataAccess;
-internal static class AnimalRecipeData
+public static class AnimalRecipeData
 {
-    public static Task<BasicList<AnimalRecipe>> GetAsync()
+    public static BasicList<AnimalRecipe> Get()
     {
         BasicList<AnimalRecipe> output = [];
         BasicList<AnimalProductionOption> options = [];
@@ -93,6 +93,11 @@ internal static class AnimalRecipeData
             IsFast = false
         };
         output.Add(recipe);
+        return output;
+    }
+    public static Task<BasicList<AnimalRecipe>> GetAsync()
+    {
+        var output = Get();
         return Task.FromResult(output);
     }
 }
