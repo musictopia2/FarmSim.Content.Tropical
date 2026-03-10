@@ -1,11 +1,9 @@
 ﻿namespace FarmSim.Content.Tropical.DataAccess;
-internal static class WorkshopData
+public static class WorkshopData
 {
-    public static Task<BasicList<WorkshopRecipe>> GetAsync()
+    public static BasicList<WorkshopRecipe> Get()
     {
         BasicList<WorkshopRecipe> output = [];
-
-
         WorkshopRecipe.AddWorkshopRecipe(output, TropicalItemList.PineappleSmoothie, TropicalWorkshopList.HuluHit,
             TimeSpan.FromMinutes(1),
             i => { i[TropicalItemList.Pineapple] = 3; });
@@ -47,7 +45,7 @@ internal static class WorkshopData
                 i[TropicalItemList.Egg] = 2;
                 i[TropicalItemList.SteamedRice] = 1;
             });
-        
+
 
 
 
@@ -133,7 +131,11 @@ internal static class WorkshopData
                 i[TropicalItemList.Tapioca] = 2;
                 i[TropicalItemList.Mushroom] = 2;
             });
-
+        return output;
+    }
+    public static Task<BasicList<WorkshopRecipe>> GetAsync()
+    {
+        var output = Get();
         return Task.FromResult(output);
     }
 }
